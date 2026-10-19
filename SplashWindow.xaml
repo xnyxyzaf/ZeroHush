@@ -1,0 +1,106 @@
+<Window x:Class="PixelStudio.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ZeroHush" Icon="pack://application:,,,/logo.ico"
+        
+        Width="480" Height="300"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True">
+
+    <Window.Resources>
+        <Style x:Key="ThinProgressBar" TargetType="ProgressBar">
+            <Setter Property="Height" Value="3"/>
+            <Setter Property="Background" Value="#2A2A2A"/>
+            <Setter Property="Foreground" Value="#4A90E2"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="2">
+                            <Grid>
+                                <Rectangle x:Name="PART_Track"/>
+                                <Rectangle x:Name="PART_Indicator"
+                                           HorizontalAlignment="Left"
+                                           Fill="{TemplateBinding Foreground}"
+                                           RadiusX="2" RadiusY="2"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border x:Name="RootCard"
+            Background="{DynamicResource Theme_WindowBg}"
+            CornerRadius="14"
+            BorderBrush="#2A2A2A"
+            BorderThickness="1"
+            Opacity="0">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" BlurRadius="30" ShadowDepth="0" Opacity="0.6"/>
+        </Border.Effect>
+
+        <Grid Margin="32,28,32,24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                
+                <Border x:Name="LogoBox"
+        Width="52" Height="52"
+        CornerRadius="12"
+        Background="Transparent"
+        RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <ScaleTransform x:Name="LogoScale" ScaleX="0.92" ScaleY="0.92"/>
+                    </Border.RenderTransform>
+                    <Image Source="ui_logo.png" Stretch="Uniform"/>
+                </Border>
+                
+                <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="ZeroHush"
+                               Foreground="White"
+                               FontSize="22"
+                               FontWeight="SemiBold"/>
+                    <TextBlock Text="A lightweight pixel art editor"
+                               Foreground="#6E6E6E"
+                               FontSize="11"
+                               Margin="0,2,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock x:Name="StatusText"
+                       Grid.Row="2"
+                       Text="正在启动..."
+                       Foreground="#9A9A9A"
+                       FontSize="11"
+                       Margin="0,28,0,10"/>
+
+            <ProgressBar x:Name="SplashProgress"
+                         Grid.Row="3"
+                         Style="{StaticResource ThinProgressBar}"
+                         Minimum="0" Maximum="1" Value="0"/>
+
+            <TextBlock x:Name="FooterText"
+                       Grid.Row="4"
+                       Text="由 Zeroμ 工作室出品"
+                       Foreground="#5A5A5A"
+                       FontSize="10"
+                       Margin="0,14,0,0"
+                       HorizontalAlignment="Right"/>
+        </Grid>
+    </Border>
+</Window>
