@@ -528,7 +528,7 @@ Background="{DynamicResource Theme_WindowBg}"        Foreground="#E6E6E6"
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0"
-                                                           Text="你的Outlook@outlook.com"
+                                                           Text="zeromubug_feedback@outlook.com"
                                                            Foreground="#4A90E2"
                                                            FontSize="12"
                                                            FontFamily="Consolas"
