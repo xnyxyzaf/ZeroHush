@@ -1,0 +1,178 @@
+<Window x:Class="PixelStudio.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:PixelStudio"
+        Title="ZeroHush" Icon="pack://application:,,,/logo.ico" Width="1100" Height="700"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource Theme_WindowBg}"        
+        Foreground="#E6E6E6"
+        MinWidth="800" MinHeight="500">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Background="{DynamicResource Theme_PanelBg}" HorizontalAlignment="Left">
+            <MenuItem Header="{loc:Loc Key=Menu_File}" Foreground="White">
+                <MenuItem Header="{loc:Loc Key=Home_NewCanvas}" InputGestureText="Ctrl+N" Click="New_Click"/>
+                <MenuItem Header="{loc:Loc Key=Home_OpenFile}" InputGestureText="Ctrl+O" Click="Open_Click"/>
+                <Separator/>
+                <MenuItem Header="{loc:Loc Key=File_Exit}" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="{loc:Loc Key=Menu_Edit}" Foreground="White">
+                <MenuItem Header="{loc:Loc Key=Menu_Settings}" Click="Settings_Click"/>
+            </MenuItem>
+            <MenuItem Header="{loc:Loc Key=Menu_Help}" Foreground="White">
+                <MenuItem Header="{loc:Loc Key=Help_Shortcuts}" Click="Help_Click"/>
+                <MenuItem Header="{loc:Loc Key=Help_About}" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Border Grid.Row="1" Background="{DynamicResource Theme_PanelBg}" Padding="20,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="50" Height="50" CornerRadius="8" Background="Transparent" ClipToBounds="True">
+                        <Image Source="ui_logo.png" Stretch="UniformToFill"/>
+                    </Border>
+                    <TextBlock Text="ZeroHush" Foreground="White" FontSize="18" FontWeight="SemiBold"
+                               Margin="12,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button Content="{loc:Loc Key=Home_NewCanvas}"
+                            Width="130" Height="36" Margin="0,0,10,0"
+                            Padding="0"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="{DynamicResource Theme_Accent}" Foreground="White"
+                            BorderThickness="0" FontSize="13"
+                            Cursor="Hand"
+                            Click="New_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="bg" Background="{TemplateBinding Background}" CornerRadius="6"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="bg" Property="Background" Value="{DynamicResource Theme_HoverBg}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Content="{loc:Loc Key=Home_OpenFile}"
+                            Width="130" Height="36"
+                            Padding="0"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="{DynamicResource Theme_CardBg}" Foreground="White"
+                            BorderThickness="0" FontSize="13"
+                            Cursor="Hand"
+                            Click="Open_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="bg" Background="{TemplateBinding Background}" CornerRadius="6"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="bg" Property="Background" Value="{DynamicResource Theme_Border}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="{DynamicResource Theme_PanelBg}" Padding="28">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Border Width="200" Height="200" CornerRadius="18" Background="Transparent"
+                                HorizontalAlignment="Left" Margin="0,0,0,20">
+                            <Image Source="ui_logo.png" Stretch="Uniform"/>
+                        </Border>
+
+                        <TextBlock Text="ZeroHush" Foreground="White"
+                                   FontSize="24" FontWeight="Bold"/>
+                        <TextBlock Text="{loc:Loc Key=About_Version}" Foreground="{DynamicResource Theme_TextSecondary}"
+                                   FontSize="12" Margin="0,4,0,24"/>
+
+                        <TextBlock Text="{loc:Loc Key=Home_About}" Foreground="{DynamicResource Theme_Accent}"
+                                   FontSize="12" FontWeight="SemiBold"
+                                   Margin="0,0,0,10"/>
+
+                        <TextBlock Foreground="{DynamicResource Theme_TextSecondary}" FontSize="12"
+                                   TextWrapping="Wrap" LineHeight="22">
+                            <Run Text="{loc:Loc Key=Home_Story1}"/>
+                            <LineBreak/>
+                            <Run Text="{loc:Loc Key=Home_Story2}"/>
+                            <LineBreak/>
+                            <Run Text="{loc:Loc Key=Home_Story3}"/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run Text="{loc:Loc Key=Home_Footer}"/>
+                        </TextBlock>
+
+                        <TextBlock Text="{loc:Loc Key=Home_Studio}"
+                                   Foreground="{DynamicResource Theme_TextDim}"
+                                   FontSize="11"
+                                   Margin="0,28,0,0"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <Border Grid.Column="1" Background="{DynamicResource Theme_WindowBg}" Padding="28,24">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{loc:Loc Key=Home_RecentProjects}" Foreground="{DynamicResource Theme_Accent}"
+                               FontSize="14" FontWeight="SemiBold"
+                               Margin="0,0,0,16"/>
+
+                    <TextBlock x:Name="EmptyHint"
+                               Grid.Row="1"
+                               Foreground="{DynamicResource Theme_TextDim}" FontSize="13"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               Text="{loc:Loc Key=Home_EmptyHint}"
+                               Visibility="Collapsed"/>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl x:Name="RecentList">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
